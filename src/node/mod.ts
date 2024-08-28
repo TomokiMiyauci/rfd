@@ -2,6 +2,7 @@ import { createRequire } from "node:module";
 import { download } from "./cache.ts";
 import { join } from "node:path";
 import { arch, platform } from "node:process";
+import { existsSync } from "node:fs";
 import type { FileDialog as _FileDialog } from "./index.d.ts";
 import json from "../../deno.json" with { type: "json" };
 import {
@@ -28,7 +29,9 @@ const require = createRequire(import.meta.url);
 
 const url = BASE_URL + NAME + "-" + target + EXT;
 
-await download(url, binaryPath);
+if (!existsSync(binaryPath)) {
+  await download(url, binaryPath);
+}
 
 const binding = require(binaryPath);
 
