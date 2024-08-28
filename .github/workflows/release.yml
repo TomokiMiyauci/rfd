@@ -245,7 +245,7 @@ jobs:
       - name: Upload releases
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ needs.release.outputs.new_tag }}
+          tag_name: 1.0.0-beta.6
           files: |
             artifact/**/*.node
           fail_on_unmatched_files: true
