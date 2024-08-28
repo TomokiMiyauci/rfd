@@ -4,7 +4,8 @@
     "specifiers": {
       "npm:@napi-rs/cli": "npm:@napi-rs/cli@2.18.4",
       "npm:@types/node": "npm:@types/node@18.16.19",
-      "npm:write-file-safe": "npm:write-file-safe@2.0.3"
+      "npm:write-file-safe": "npm:write-file-safe@2.0.3",
+      "npm:write-file-safe@^2.0.3": "npm:write-file-safe@2.0.3"
     },
     "npm": {
       "@napi-rs/cli@2.18.4": {
@@ -65,5 +66,10 @@
       }
     }
   },
-  "remote": {}
+  "remote": {},
+  "workspace": {
+    "dependencies": [
+      "npm:write-file-safe@^2.0.3"
+    ]
+  }
 }

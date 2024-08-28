@@ -8,7 +8,8 @@
   "exclude": ["CHANGELOG.md"],
 
   "imports": {
-    "@miyauci/rfd/$RUNTIME": "./src/node/mod.ts"
+    "@miyauci/rfd/$RUNTIME": "./src/node/mod.ts",
+    "write-file-safe": "npm:write-file-safe@^2.0.3"
   },
 
   "exports": {

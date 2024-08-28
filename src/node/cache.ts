@@ -1,5 +1,5 @@
 import { Buffer } from "node:buffer";
-import { writeFile } from "npm:write-file-safe";
+import { writeFile } from "write-file-safe";
 
 export async function download(url: string | URL, dest: string): Promise<void> {
   const response = await fetch(url);
