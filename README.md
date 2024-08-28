@@ -2,6 +2,14 @@
 
 File dialog, port of [Rust rfd](https://github.com/PolyMeilex/rfd).
 
+## Install
+
+node:
+
+```bash
+npx jsr add @miyauci/fs
+```
+
 ## Usage
 
 ```ts
