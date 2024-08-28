@@ -30,7 +30,9 @@ export async function resolvePkgDir(moduleName: string): Promise<string> {
     },
   });
 
-  if (!scopeURL) throw new Error("");
+  if (!scopeURL) {
+    throw new Error(`Fail to resolve "${moduleName}" node_modules path`);
+  }
 
   return scopeURL.pathname;
 }
