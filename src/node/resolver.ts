@@ -1,3 +1,6 @@
+import { lookupPackageScope } from "@miyauci/node-esm-resolution";
+import { existsSync } from "node:fs";
+
 export type PlatformArchMap = {
   [k in NodeJS.Platform]?: ArchMap;
 };
@@ -16,4 +19,18 @@ export function resolvePlatformArchMap(
   }
 
   throw new Error(`Not supported. ${platform} ${arch}`);
+}
+
+export async function resolvePkgDir(moduleName: string): Promise<string> {
+  const url = import.meta.resolve(moduleName);
+
+  const scopeURL = await lookupPackageScope(url, {
+    existFile(url) {
+      return existsSync(url);
+    },
+  });
+
+  if (!scopeURL) throw new Error("");
+
+  return scopeURL.pathname;
 }

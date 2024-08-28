@@ -8,6 +8,7 @@
   "exclude": ["CHANGELOG.md"],
 
   "imports": {
+    "@miyauci/node-esm-resolution": "jsr:@miyauci/node-esm-resolution@^1.0.0-beta.6",
     "@miyauci/rfd/$RUNTIME": "./src/node/mod.ts",
     "write-file-safe": "npm:write-file-safe@^2.0.3"
   },

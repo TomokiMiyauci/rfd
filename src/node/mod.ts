@@ -4,7 +4,11 @@ import { join } from "node:path";
 import { arch, platform } from "node:process";
 import type { FileDialog as _FileDialog } from "./index.d.ts";
 import json from "../../deno.json" with { type: "json" };
-import { type PlatformArchMap, resolvePlatformArchMap } from "./resolver.ts";
+import {
+  type PlatformArchMap,
+  resolvePkgDir,
+  resolvePlatformArchMap,
+} from "./resolver.ts";
 
 const NAME = "rfd";
 const EXT = ".node";
@@ -15,11 +19,12 @@ const platformArch = {
   darwin: { x64: "x86_64-apple-darwin", arm64: "aarch64-apple-darwin" },
   win32: { x64: "x86_64-pc-windows-msvc", arm64: "aarch64-pc-windows-msvc" },
 } satisfies PlatformArchMap;
+const PKG_NAME = json.name + "/" + "node";
 
-const require = createRequire(import.meta.url);
-const pkgRoot = require.resolve(json.name);
+const pkgRoot = await resolvePkgDir(PKG_NAME);
 const binaryPath = join(pkgRoot, ".bin", BINARY_NAME);
 const target = resolvePlatformArchMap(platformArch, platform, arch);
+const require = createRequire(import.meta.url);
 
 const url = BASE_URL + NAME + "-" + target + EXT;
 
