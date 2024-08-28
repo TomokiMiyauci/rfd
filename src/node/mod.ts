@@ -13,6 +13,7 @@ const BASE_URL =
   `https://github.com/TomokiMiyauci/rfd/releases/download/${json.version}/`;
 const platformArch = {
   darwin: { x64: "x86_64-apple-darwin" },
+  win32: { x64: "x86_64-pc-windows-msvc" },
 } satisfies PlatformArchMap;
 
 const require = createRequire(import.meta.url);
