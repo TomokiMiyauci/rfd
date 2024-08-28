@@ -1,0 +1,14 @@
+[package]
+name = "rfd-node"
+edition = "2021"
+
+[dependencies]
+napi-derive = "2.16.11"
+napi = { version = "2.12.2", default-features = false, features = ["napi4"] }
+rfd = "0.14.1"
+
+[build-dependencies]
+napi-build = "2.0.1"
+
+[lib]
+crate-type = ["cdylib"]
