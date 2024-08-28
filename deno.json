@@ -1,0 +1,13 @@
+{
+  "name": "@miyauci/rfd",
+
+  "tasks": {
+    "build-node": "deno run --allow-env --allow-read --allow-sys --allow-write=. --allow-run npm:@napi-rs/cli build --cargo-cwd src/node --release"
+  },
+
+  "exports": {
+    "./node": "./src/node/mod.ts"
+  },
+
+  "version": "0.1.0-placeholder"
+}

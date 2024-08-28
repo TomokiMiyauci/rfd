@@ -1,0 +1,69 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "npm:@napi-rs/cli": "npm:@napi-rs/cli@2.18.4",
+      "npm:@types/node": "npm:@types/node@18.16.19",
+      "npm:write-file-safe": "npm:write-file-safe@2.0.3"
+    },
+    "npm": {
+      "@napi-rs/cli@2.18.4": {
+        "integrity": "sha512-SgJeA4df9DE2iAEpr3M2H0OKl/yjtg1BnRI5/JyowS71tUWhrfSu2LT0V3vlHET+g1hBVlrO60PmEXwUEKp8Mg==",
+        "dependencies": {}
+      },
+      "@types/node@18.16.19": {
+        "integrity": "sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==",
+        "dependencies": {}
+      },
+      "char-to-string@2.0.0": {
+        "integrity": "sha512-PN6XD9jZ/DmKlyp9F2cCeEHY/CUdpsVG4pBLX5Y0uTc8DCDAhJzbLOocr3ejXMc0wL6/ea5uvlcA0Qk6+OwVZQ==",
+        "dependencies": {}
+      },
+      "detect-newline@4.0.1": {
+        "integrity": "sha512-qE3Veg1YXzGHQhlA6jzebZN2qVf6NX+A7m7qlhCGG30dJixrAQhYOsJjsnBjJkCSmuOPpCk30145fr8FV0bzog==",
+        "dependencies": {}
+      },
+      "ends-with-string@2.0.0": {
+        "integrity": "sha512-c82jLyJORw/yJ7Z3nKyp+WOxN3WGULnSByJAsanu+8I/H6WlZIa2D9bz5rEmRKCKhCNVK1NKsKoHXEcE4LEdbA==",
+        "dependencies": {
+          "char-to-string": "char-to-string@2.0.0"
+        }
+      },
+      "is-path-inside@4.0.0": {
+        "integrity": "sha512-lJJV/5dYS+RcL8uQdBDW9c9uWFLLBNRyFhnAKXw5tVqLlKZ4RMGZKv+YQ/IA3OhD+RpbJa1LLFM1FQPGyIXvOA==",
+        "dependencies": {}
+      },
+      "read-file-safe@2.1.1": {
+        "integrity": "sha512-Qge8x3UzI/0hEcfsvG60Bvw5DX9BUHS0gIunXPAo/7gEZRTzMLVHbI9Uv5VQvNS9eBrrqOX0pkdP9Pzr3m9xFg==",
+        "dependencies": {}
+      },
+      "remove-file-safe@3.0.0": {
+        "integrity": "sha512-JkgTbVCca0UQjWSAhpSPFR+ZT4Fr+2qkvQ5hMa8WMZGDLI56jztX+ZQpdCvzc+MBxyj4vlZs/dCln2DIvHS43w==",
+        "dependencies": {
+          "is-path-inside": "is-path-inside@4.0.0"
+        }
+      },
+      "terminating-newline@2.0.0": {
+        "integrity": "sha512-H8yf0+0aQ9WzDE//BvRE9onDMpu5gPX/rUo6EJlZ2G9dmy+sbZVQJvA1NIBqYeQBivviw++K0YKZMqf4A7j/tA==",
+        "dependencies": {
+          "detect-newline": "detect-newline@4.0.1",
+          "ends-with-string": "ends-with-string@2.0.0"
+        }
+      },
+      "write-dir-safe@2.0.1": {
+        "integrity": "sha512-rL5prgKDZlPC/A1XDbAVsH3nDwKKMLPor6NcKk10zz1jN/GxyRZFrhIDUsTKrhxT/dj5fMBOZ+2uo04vVC+m7w==",
+        "dependencies": {}
+      },
+      "write-file-safe@2.0.3": {
+        "integrity": "sha512-KL/0O4M3cSpTKGbudiS0q2aHUyegDVna7/RDqjaQlEPtG/Kzs3AmUeHkpG55yYkxP09euOZAMG+jJL+pmYEDDQ==",
+        "dependencies": {
+          "read-file-safe": "read-file-safe@2.1.1",
+          "remove-file-safe": "remove-file-safe@3.0.0",
+          "terminating-newline": "terminating-newline@2.0.0",
+          "write-dir-safe": "write-dir-safe@2.0.1"
+        }
+      }
+    }
+  },
+  "remote": {}
+}
