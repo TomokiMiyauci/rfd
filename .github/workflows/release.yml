@@ -240,7 +240,7 @@ jobs:
         with:
           tag_name: ${{ needs.release.outputs.new_tag }}
           files: |
-            artifacts/*.node
+            artifacts/**/*.node
           fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
