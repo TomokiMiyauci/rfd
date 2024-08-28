@@ -99,7 +99,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.settings.target }}
+          name: rfd-${{ matrix.settings.target }}-node
           path: rfd-${{ matrix.settings.target }}.node
           if-no-files-found: error
 
@@ -242,13 +242,10 @@ jobs:
         with:
           path: artifact
 
-      - name: debug
-        run: ls -R .
-
       - name: Upload releases
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: 1.0.0-beta.5
+          tag_name: ${{ needs.release.outputs.new_tag }}
           files: |
             artifact/**/*.node
           fail_on_unmatched_files: true
