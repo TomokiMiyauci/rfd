@@ -92,11 +92,14 @@ jobs:
         run: deno task build-node --target ${{ matrix.settings.target }}
         shell: bash
 
+      - name: Rename
+        run: mv index.node rfd-${{ matrix.settings.target }}.node
+        shell: bash
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: rfd-${{ matrix.settings.target }}.node
-          path: index.node
+          path: rfd-${{ matrix.settings.target }}.node
           if-no-files-found: error
 
   # test-macOS-windows-binding:
