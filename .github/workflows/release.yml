@@ -22,16 +22,7 @@ jobs:
             target: aarch64-pc-windows-msvc
           - os: ubuntu-latest
             target: aarch64-unknown-linux-gnu
-            image: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian-aarch64
 
-          # - host: ubuntu-latest
-          #   target: x86_64-unknown-linux-gnu
-          #   docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian
-          #   build: yarn build --target x86_64-unknown-linux-gnu
-          # - host: ubuntu-latest
-          #   target: aarch64-unknown-linux-gnu
-          #   docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian-aarch64
-          #   build: yarn build --target aarch64-unknown-linux-gnu
           # - host: ubuntu-latest
           #   target: aarch64-linux-android
           #   build: yarn build --target aarch64-linux-android
@@ -83,14 +74,6 @@ jobs:
       #     node-version: 20
       #     cache: yarn
       #     architecture: x86
-
-      - name: Build in docker
-        uses: addnab/docker-run-action@v3
-        if: ${{ matrix.settings.image }}
-        with:
-          image: ${{ matrix.settings.image }}
-          options: '--user 0:0 -v ${{ github.workspace }}/.cargo-cache/git/db:/usr/local/cargo/git/db -v ${{ github.workspace }}/.cargo/registry/cache:/usr/local/cargo/registry/cache -v ${{ github.workspace }}/.cargo/registry/index:/usr/local/cargo/registry/index -v ${{ github.workspace }}:/build -w /build'
-          run: deno task build-node --target ${{ matrix.settings.target }}
 
       - name: Build
         if: ${{ !matrix.settings.image }}
