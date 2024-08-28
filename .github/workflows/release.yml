@@ -89,7 +89,7 @@ jobs:
       #     run: ${{ matrix.settings.build }}
 
       - name: Build
-        run: deno task build-node
+        run: deno task build-node --target ${{ matrix.settings.target }}
         shell: bash
 
       - name: Upload artifact
@@ -237,6 +237,9 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: artifacts
+
+        name: debug
+        run: ls -R .
 
       - name: Upload releases
         uses: softprops/action-gh-release@v2
