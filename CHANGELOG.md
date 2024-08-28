@@ -1,3 +1,10 @@
+# [1.0.0-beta.4](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.3...1.0.0-beta.4) (2024-08-28)
+
+
+### Features
+
+* **node:** support target of aarch64-apple-darwin ([c388c71](https://github.com/TomokiMiyauci/rfd/commit/c388c711ff8f24c9c4369e02984c56f341703491))
+
 # [1.0.0-beta.3](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.2...1.0.0-beta.3) (2024-08-28)
 
 
