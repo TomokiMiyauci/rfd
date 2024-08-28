@@ -238,7 +238,7 @@ jobs:
         with:
           path: artifacts
 
-        name: debug
+      - name: debug
         run: ls -R .
 
       - name: Upload releases
