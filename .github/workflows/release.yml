@@ -237,7 +237,8 @@ jobs:
         with:
           tag_name: ${{ needs.release.outputs.new_tag }}
           files: |
-            *.node
+            **/*.node
+          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
