@@ -1,3 +1,10 @@
+# [1.0.0-beta.5](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.4...1.0.0-beta.5) (2024-08-28)
+
+
+### Features
+
+* **node:** support target of aarch64-pc-windows-msvc ([d806471](https://github.com/TomokiMiyauci/rfd/commit/d806471f17c936609f62b36ff287b22b1703b0c1))
+
 # [1.0.0-beta.4](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.3...1.0.0-beta.4) (2024-08-28)
 
 
