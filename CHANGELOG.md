@@ -1,3 +1,10 @@
+# [1.0.0-beta.6](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.5...1.0.0-beta.6) (2024-08-28)
+
+
+### Bug Fixes
+
+* **node:** fix to resolve package root algorithm ([a815006](https://github.com/TomokiMiyauci/rfd/commit/a815006a67e967d37ff8413779a7f3f1e60ceb59))
+
 # [1.0.0-beta.5](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.4...1.0.0-beta.5) (2024-08-28)
 
 
