@@ -4,23 +4,15 @@ import { join } from "node:path";
 import { arch, platform } from "node:process";
 import { existsSync } from "node:fs";
 import type { FileDialog as _FileDialog } from "./index.d.ts";
-import json from "../../deno.json" with { type: "json" };
+import { resolvePkgDir, resolvePlatformArchMap } from "./resolver.ts";
 import {
-  type PlatformArchMap,
-  resolvePkgDir,
-  resolvePlatformArchMap,
-} from "./resolver.ts";
-
-const NAME = "rfd";
-const EXT = ".node";
-const BINARY_NAME = NAME + EXT;
-const BASE_URL =
-  `https://github.com/TomokiMiyauci/rfd/releases/download/${json.version}/`;
-const platformArch = {
-  darwin: { x64: "x86_64-apple-darwin", arm64: "aarch64-apple-darwin" },
-  win32: { x64: "x86_64-pc-windows-msvc", arm64: "aarch64-pc-windows-msvc" },
-} satisfies PlatformArchMap;
-const PKG_NAME = json.name + "/" + "node";
+  BASE_URL,
+  BINARY_NAME,
+  EXT,
+  NAME,
+  PKG_NAME,
+  platformArch,
+} from "./constant.ts";
 
 const pkgRoot = await resolvePkgDir(PKG_NAME);
 const binaryPath = join(pkgRoot, ".bin", BINARY_NAME);
