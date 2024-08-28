@@ -1,3 +1,10 @@
+# [1.0.0-beta.3](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.2...1.0.0-beta.3) (2024-08-28)
+
+
+### Features
+
+* **node:** support target of x86_64-pc-windows-msvc ([3043316](https://github.com/TomokiMiyauci/rfd/commit/304331685df6e385f7f386025f3f8dd6adadd8cf))
+
 # [1.0.0-beta.2](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.1...1.0.0-beta.2) (2024-08-28)
 
 
