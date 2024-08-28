@@ -12,7 +12,7 @@ const BINARY_NAME = NAME + EXT;
 const BASE_URL =
   `https://github.com/TomokiMiyauci/rfd/releases/download/${json.version}/`;
 const platformArch = {
-  darwin: { x64: "x86_64-apple-darwin" },
+  darwin: { x64: "x86_64-apple-darwin", arm64: "aarch64-apple-darwin" },
   win32: { x64: "x86_64-pc-windows-msvc" },
 } satisfies PlatformArchMap;
 
