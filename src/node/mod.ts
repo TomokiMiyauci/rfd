@@ -17,7 +17,7 @@ const platformArch = {
 
 const require = createRequire(import.meta.url);
 const pkgRoot = require.resolve(json.name);
-const binaryPath = join(pkgRoot, "bin", BINARY_NAME);
+const binaryPath = join(pkgRoot, ".bin", BINARY_NAME);
 const target = resolvePlatformArchMap(platformArch, platform, arch);
 
 const url = BASE_URL + NAME + "-" + target + EXT;
