@@ -9,5 +9,6 @@ export const BASE_URL =
 export const platformArch = {
   darwin: { x64: "x86_64-apple-darwin", arm64: "aarch64-apple-darwin" },
   win32: { x64: "x86_64-pc-windows-msvc", arm64: "aarch64-pc-windows-msvc" },
+  linux: { arm64: "aarch64-unknown-linux-gnu" },
 } satisfies PlatformArchMap;
 export const PKG_NAME = json.name + "/" + "node";
