@@ -112,7 +112,7 @@ impl Dialog {
     }
 
     pub fn set_directory(&self, p: &[u8]) -> Dialog {
-        let path_str = str::from_utf8(p).expect("Invalid UTF-8 sequence");
+        let path_str = str::from_utf8(p).unwrap();
         let path = Path::new(path_str);
 
         let dialog = self.dialog.clone().set_directory(path);
@@ -121,7 +121,7 @@ impl Dialog {
     }
 
     pub fn set_file_name(&self, file_name: &[u8]) -> Dialog {
-        let file_name = str::from_utf8(file_name).expect("Invalid UTF-8 sequence");
+        let file_name = str::from_utf8(file_name).unwrap();
 
         let dialog = self.dialog.clone().set_file_name(file_name);
 
@@ -130,7 +130,7 @@ impl Dialog {
 
     pub fn add_filter(&self, extensions: &[u8]) -> Dialog {
         // let name: &str = str::from_utf8(name).expect("Invalid UTF-8 sequence");
-        let json = str::from_utf8(extensions).expect("Invalid UTF-8 sequence");
+        let json = str::from_utf8(extensions).unwrap();
         let parsed: Value = serde_json::from_str(json).unwrap();
 
         let x = parsed.as_array().unwrap();
@@ -142,13 +142,13 @@ impl Dialog {
     }
 
     pub fn set_title(&mut self, title: &[u8]) {
-        let title = str::from_utf8(title).expect("Invalid UTF-8 sequence");
+        let title = str::from_utf8(title).unwrap();
 
         self.dialog = self.dialog.clone().set_title(title);
     }
 
     pub fn set_can_create_directories(&mut self, can: &[u8]) {
-        let json = str::from_utf8(can).expect("Invalid UTF-8 sequence");
+        let json = str::from_utf8(can).unwrap();
         let parsed: Value = serde_json::from_str(json).unwrap();
         let can = parsed.as_bool().unwrap();
 
