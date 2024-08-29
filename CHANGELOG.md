@@ -1,3 +1,10 @@
+# [1.0.0-beta.10](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.9...1.0.0-beta.10) (2024-08-29)
+
+
+### Features
+
+* **node:** change declaration class to interface ([3e1a9f8](https://github.com/TomokiMiyauci/rfd/commit/3e1a9f872fbc5977fab94b039ec25d007aca40e0))
+
 # [1.0.0-beta.9](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.8...1.0.0-beta.9) (2024-08-29)
 
 
