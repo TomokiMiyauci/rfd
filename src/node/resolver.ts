@@ -21,18 +21,29 @@ export function resolvePlatformArchMap(
   throw new Error(`Not supported. ${platform} ${arch}`);
 }
 
-export async function resolvePkgDir(moduleName: string): Promise<string> {
-  const url = import.meta.resolve(moduleName);
-
-  const scopeURL = await lookupPackageScope(url, {
+export async function resolvePkgDir(fileURL: URL | string): Promise<string> {
+  const scopeURL = await lookupPackageScope(fileURL, {
     existFile(url) {
       return existsSync(url);
     },
   });
 
   if (!scopeURL) {
-    throw new Error(`Fail to resolve "${moduleName}" node_modules path`);
+    throw new Error(`Fail to resolve '${fileURL}' scope URL.`);
   }
 
   return scopeURL.pathname;
+}
+
+/** Try to resolve specifiers. */
+export function resolves(specifiers: Iterable<string>): string | null {
+  for (const specifier of specifiers) {
+    try {
+      return import.meta.resolve(specifier);
+    } catch {
+      //
+    }
+  }
+
+  return null;
 }

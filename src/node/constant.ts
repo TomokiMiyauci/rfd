@@ -15,3 +15,4 @@ export const platformArch = {
   },
 } satisfies PlatformArchMap;
 export const PKG_NAME = json.name + "/" + "node";
+export const JSR_NAME = "@jsr/miyauci__rfd/node"; // JSR internal package name
