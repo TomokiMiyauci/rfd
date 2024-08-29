@@ -35,7 +35,7 @@ jobs:
             target: aarch64-unknown-linux-gnu
             cross: true
 
-    name: ${{ matrix.lib.pkg-name }} - ${{ matrix.settings.target }}
+    name: ${{ matrix.lib.for }} - ${{ matrix.settings.target }}
     runs-on: ${{ matrix.settings.os }}
     steps:
       - uses: actions/checkout@v4
