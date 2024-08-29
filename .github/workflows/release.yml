@@ -263,7 +263,6 @@ jobs:
             artifact/**/*.dylib
             artifact/**/*.dll
             artifact/**/*.so
-          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
