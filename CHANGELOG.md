@@ -1,3 +1,10 @@
+# [1.0.0-beta.12](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.11...1.0.0-beta.12) (2024-08-29)
+
+
+### Features
+
+* **deno:** export `setTitle` and `setCanCreateDirectories` method to FileDialog ([90d9d9b](https://github.com/TomokiMiyauci/rfd/commit/90d9d9bff74906d2d36e3d35053de5de35d7d428))
+
 # [1.0.0-beta.11](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.10...1.0.0-beta.11) (2024-08-29)
 
 
