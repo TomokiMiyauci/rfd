@@ -1,3 +1,10 @@
+# [1.0.0-beta.11](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.10...1.0.0-beta.11) (2024-08-29)
+
+
+### Features
+
+* **node:** try to resolve as jsr internal package ([40d1db0](https://github.com/TomokiMiyauci/rfd/commit/40d1db020b923fc3cfa72344d546e6663afce6a5))
+
 # [1.0.0-beta.10](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.9...1.0.0-beta.10) (2024-08-29)
 
 
