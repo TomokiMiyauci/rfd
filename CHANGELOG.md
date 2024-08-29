@@ -1,3 +1,10 @@
+# [1.0.0-beta.8](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.7...1.0.0-beta.8) (2024-08-29)
+
+
+### Features
+
+* **node:** support target of x86_64-unknown-linux-gnu ([594071a](https://github.com/TomokiMiyauci/rfd/commit/594071ad24f2d7ad6f041ac7c360fcca6083ffc1))
+
 # [1.0.0-beta.7](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.6...1.0.0-beta.7) (2024-08-29)
 
 
