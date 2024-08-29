@@ -11,6 +11,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        lib:
+          - name: rdf-node
+            for: node
+
         settings:
           - os: macos-latest
             target: x86_64-apple-darwin
@@ -81,7 +85,7 @@ jobs:
       #     architecture: x86
 
       - name: Build
-        run: ${{ matrix.settings.cross && 'cross' || 'cargo' }} build -p rfd-node --release --target ${{ matrix.settings.target }} --locked
+        run: ${{ matrix.settings.cross && 'cross' || 'cargo' }} build -p ${{ matrix.lib.name }} --release --target ${{ matrix.settings.target }} --locked
 
       - name: Rename artifacts
         shell: bash
@@ -89,7 +93,11 @@ jobs:
           find target/${{ matrix.settings.target }}/release -maxdepth 1 \( -name '*.so' -o -name '*.dll' -o -name '*.dylib' \) -exec sh -c '
           for file; do
             if [ -e "$file" ]; then
-              cp "$file" "rfd-${{ matrix.settings.target }}.node";
+              if [ "${{ matrix.lib.for }}" == "node"]; then
+                cp "$file" "rfd-${{ matrix.settings.target }}.node";
+              else
+                cp "$file" "rfd-${{ matrix.settings.target }}.${file##*.}";
+              fi
             fi
           done' sh {} +
 
@@ -99,8 +107,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: rfd-node-${{ matrix.settings.target }}
-          path: rfd-${{ matrix.settings.target }}.node
+          name: ${{ matrix.lib.name }}-${{ matrix.settings.target }}
+          path: rfd-${{ matrix.settings.target }}.*
           if-no-files-found: error
 
   # test-macOS-windows-binding:
