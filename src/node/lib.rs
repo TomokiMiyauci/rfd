@@ -18,11 +18,9 @@ impl FileDialog {
 
     #[napi]
     pub fn pick_file(&self) -> Option<String> {
-        let _file = self.dialog.clone().pick_file();
+        let path = self.dialog.clone().pick_file();
 
-        let x = _file.map(|s| s.to_str().expect("").to_string());
-
-        x
+        path.map(to_str)
     }
 
     #[napi]
@@ -94,5 +92,5 @@ impl FileDialog {
 }
 
 fn to_str(path: PathBuf) -> String {
-    path.to_str().expect("hoge").to_string()
+    path.to_str().expect("Invalid UTF-8 sequence").to_string()
 }
