@@ -22,6 +22,7 @@ jobs:
             target: aarch64-pc-windows-msvc
           - os: ubuntu-latest
             target: aarch64-unknown-linux-gnu
+            cross: true
 
           # - host: ubuntu-latest
           #   target: aarch64-linux-android
@@ -37,7 +38,6 @@ jobs:
 
       - name: Install
         uses: dtolnay/rust-toolchain@stable
-        if: ${{ !matrix.settings.image }}
         with:
           toolchain: stable
           targets: ${{ matrix.settings.target }}
@@ -52,6 +52,11 @@ jobs:
             .cargo-cache
             target/
           key: ${{ matrix.settings.target }}-cargo-${{ matrix.settings.os }}
+
+      - name: Install cached cross
+        uses: baptiste0928/cargo-install@v3
+        with:
+          crate: cross
 
       # - uses: goto-bus-stop/setup-zig@v2
       #   if: ${{ matrix.settings.target == 'armv7-unknown-linux-gnueabihf' || matrix.settings.target == 'armv7-unknown-linux-musleabihf' }}
@@ -76,19 +81,23 @@ jobs:
       #     architecture: x86
 
       - name: Build
-        if: ${{ !matrix.settings.image }}
-        run: deno task build-node --target ${{ matrix.settings.target }}
-        shell: bash
+        run: ${{ matrix.targets.cross && 'cross' || 'cargo' }} build -p rfd-node --release --target ${{ matrix.targets.target }} --locked
 
-      - name: Rename
-        run: mv index.node rfd-${{ matrix.settings.target }}.node
+      - name: Rename artifacts
         shell: bash
+        run: |
+          find target/${{ matrix.targets.target }}/release -maxdepth 1 \( -name '*.so' -o -name '*.dll' -o -name '*.dylib' \) -exec sh -c '
+          for file; do
+            if [ -e "$file" ]; then
+              mv "$file" "rfd-${{ matrix.targets.target }}.node";
+            fi
+          done' sh {} +
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: rfd-${{ matrix.settings.target }}-node
-          path: rfd-${{ matrix.settings.target }}.node
+          path: target
           if-no-files-found: error
 
   # test-macOS-windows-binding:
@@ -218,6 +227,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifact
+
+      - name: debug
+        run: ls -R
+
   upload:
     needs: [release]
     if: ${{ needs.release.outputs.new_release == 'true' }}
@@ -235,7 +251,7 @@ jobs:
         with:
           tag_name: ${{ needs.release.outputs.new_tag }}
           files: |
-            artifact/**/*.node
+            artifact/**/release/*.node
           fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
