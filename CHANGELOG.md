@@ -1,3 +1,11 @@
+# [1.0.0-beta.7](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.6...1.0.0-beta.7) (2024-08-29)
+
+
+### Features
+
+* **node:** add checking binary cache before download ([21d0b81](https://github.com/TomokiMiyauci/rfd/commit/21d0b81ece1016df2dc6cd781dea601ae6c763a1))
+* **node:** support target of aarch64-unknown-linux-gnu ([648a039](https://github.com/TomokiMiyauci/rfd/commit/648a03926ed1ec536f5301255955a4e8a013a92c))
+
 # [1.0.0-beta.6](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.5...1.0.0-beta.6) (2024-08-28)
 
 
