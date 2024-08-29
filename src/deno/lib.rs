@@ -111,24 +111,20 @@ impl Dialog {
         c_string.into_raw()
     }
 
-    pub fn set_directory(&self, p: &[u8]) -> Dialog {
+    pub fn set_directory(&mut self, p: &[u8]) {
         let path_str = str::from_utf8(p).unwrap();
         let path = Path::new(path_str);
 
-        let dialog = self.dialog.clone().set_directory(path);
-
-        Dialog { dialog }
+        self.dialog = self.dialog.clone().set_directory(path);
     }
 
-    pub fn set_file_name(&self, file_name: &[u8]) -> Dialog {
+    pub fn set_file_name(&mut self, file_name: &[u8]) {
         let file_name = str::from_utf8(file_name).unwrap();
 
-        let dialog = self.dialog.clone().set_file_name(file_name);
-
-        Dialog { dialog }
+        self.dialog = self.dialog.clone().set_file_name(file_name);
     }
 
-    pub fn add_filter(&self, extensions: &[u8]) -> Dialog {
+    pub fn add_filter(&mut self, extensions: &[u8]) {
         // let name: &str = str::from_utf8(name).expect("Invalid UTF-8 sequence");
         let json = str::from_utf8(extensions).unwrap();
         let parsed: Value = serde_json::from_str(json).unwrap();
@@ -136,9 +132,7 @@ impl Dialog {
         let x = parsed.as_array().unwrap();
         let y: Vec<&str> = x.iter().filter_map(|v| v.as_str()).collect();
 
-        let dialog = self.dialog.clone().add_filter("", &y);
-
-        Dialog { dialog }
+        self.dialog = self.dialog.clone().add_filter("", &y);
     }
 
     pub fn set_title(&mut self, title: &[u8]) {

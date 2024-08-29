@@ -73,27 +73,24 @@ export class FileDialog implements _FileDialog {
   addFilter(_: string, extensions: string[]): this {
     const extensionsStr = JSON.stringify(extensions);
     const ext = new TextEncoder().encode(extensionsStr);
-    const dialog = this.#dialog.add_filter(ext);
 
-    this.#update(dialog);
+    this.#dialog.add_filter(ext);
 
     return this;
   }
 
   setDirectory(path: string): this {
     const u8 = new TextEncoder().encode(path);
-    const dialog = this.#dialog.set_directory(u8);
 
-    this.#update(dialog);
+    this.#dialog.set_directory(u8);
 
     return this;
   }
 
   setFileName(fileName: string): this {
     const u8 = new TextEncoder().encode(fileName);
-    const dialog = this.#dialog.set_file_name(u8);
 
-    this.#update(dialog);
+    this.#dialog.set_file_name(u8);
 
     return this;
   }
@@ -115,17 +112,7 @@ export class FileDialog implements _FileDialog {
     return this;
   }
 
-  #release(): void {
-    this.#dialog[Symbol.dispose]();
-  }
-
-  #update(dialog: Dialog): void {
-    this.#release();
-
-    this.#dialog = dialog;
-  }
-
   [Symbol.dispose](): void {
-    this.#release();
+    this.#dialog[Symbol.dispose]();
   }
 }

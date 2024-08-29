@@ -54,40 +54,37 @@ function __Dialog_save_file(
 function __Dialog_set_directory(
   arg0: Deno.PointerObject | null,
   arg1: Uint8Array,
-): Dialog {
-  const ret = symbols.__Dialog_set_directory(
+): void {
+  return symbols.__Dialog_set_directory(
     arg0,
     arg1,
     // @ts-ignore
     arg1.byteLength,
   );
-  return Dialog.__constructor(ret);
 }
 
 function __Dialog_set_file_name(
   arg0: Deno.PointerObject | null,
   arg1: Uint8Array,
-): Dialog {
-  const ret = symbols.__Dialog_set_file_name(
+): void {
+  return symbols.__Dialog_set_file_name(
     arg0,
     arg1,
     // @ts-ignore
     arg1.byteLength,
   );
-  return Dialog.__constructor(ret);
 }
 
 function __Dialog_add_filter(
   arg0: Deno.PointerObject | null,
   arg1: Uint8Array,
-): Dialog {
-  const ret = symbols.__Dialog_add_filter(
+): void {
+  return symbols.__Dialog_add_filter(
     arg0,
     arg1,
     // @ts-ignore
     arg1.byteLength,
   );
-  return Dialog.__constructor(ret);
 }
 
 function __Dialog_set_title(
@@ -170,7 +167,7 @@ export class Dialog {
     );
   }
 
-  set_directory(arg0: Uint8Array): Dialog {
+  set_directory(arg0: Uint8Array): void {
     return __Dialog_set_directory(
       this.ptr,
       arg0,
@@ -179,7 +176,7 @@ export class Dialog {
     );
   }
 
-  set_file_name(arg0: Uint8Array): Dialog {
+  set_file_name(arg0: Uint8Array): void {
     return __Dialog_set_file_name(
       this.ptr,
       arg0,
@@ -188,7 +185,7 @@ export class Dialog {
     );
   }
 
-  add_filter(arg0: Uint8Array): Dialog {
+  add_filter(arg0: Uint8Array): void {
     return __Dialog_add_filter(
       this.ptr,
       arg0,

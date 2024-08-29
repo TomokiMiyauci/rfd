@@ -45,7 +45,7 @@ export const symbols = {
       "buffer",
       "usize",
     ],
-    result: "pointer",
+    result: "void",
     nonblocking: false,
   },
   __Dialog_set_file_name: {
@@ -54,7 +54,7 @@ export const symbols = {
       "buffer",
       "usize",
     ],
-    result: "pointer",
+    result: "void",
     nonblocking: false,
   },
   __Dialog_add_filter: {
@@ -63,7 +63,7 @@ export const symbols = {
       "buffer",
       "usize",
     ],
-    result: "pointer",
+    result: "void",
     nonblocking: false,
   },
   __Dialog_set_title: {
