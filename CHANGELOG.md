@@ -1,3 +1,10 @@
+# [1.0.0-beta.9](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.8...1.0.0-beta.9) (2024-08-29)
+
+
+### Features
+
+* **deno:** export rfd binding for deno ([8f0a769](https://github.com/TomokiMiyauci/rfd/commit/8f0a769d1f5ffec634164b65b8c1f22a687792b0))
+
 # [1.0.0-beta.8](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.7...1.0.0-beta.8) (2024-08-29)
 
 
