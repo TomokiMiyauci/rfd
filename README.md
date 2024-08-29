@@ -44,7 +44,7 @@ using dialog = new FileDialog();
 
 The following flags are required for execution:
 
-- `unstable-ffi`
+- `--unstable-ffi`
 
 #### Permission Flags
 
