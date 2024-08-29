@@ -3,7 +3,7 @@ import { download } from "./cache.ts";
 import { join } from "node:path";
 import { arch, platform } from "node:process";
 import { existsSync } from "node:fs";
-import type { FileDialog as _FileDialog } from "./type.ts";
+import type { FileDialog as _FileDialog } from "../type.ts";
 import { resolvePkgDir, resolvePlatformArchMap, resolves } from "./resolver.ts";
 import {
   BASE_URL,
