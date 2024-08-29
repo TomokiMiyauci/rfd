@@ -27,10 +27,18 @@ function __Dialog_pick_files(
   );
 }
 
-function __Dialog_pick_directory(
+function __Dialog_pick_folder(
   arg0: Deno.PointerObject | null,
 ): Deno.PointerObject | null {
-  return symbols.__Dialog_pick_directory(
+  return symbols.__Dialog_pick_folder(
+    arg0,
+  );
+}
+
+function __Dialog_pick_folders(
+  arg0: Deno.PointerObject | null,
+): Deno.PointerObject | null {
+  return symbols.__Dialog_pick_folders(
     arg0,
   );
 }
@@ -82,6 +90,30 @@ function __Dialog_add_filter(
   return Dialog.__constructor(ret);
 }
 
+function __Dialog_set_title(
+  arg0: Deno.PointerObject | null,
+  arg1: Uint8Array,
+): void {
+  return symbols.__Dialog_set_title(
+    arg0,
+    arg1,
+    // @ts-ignore
+    arg1.byteLength,
+  );
+}
+
+function __Dialog_set_can_create_directories(
+  arg0: Deno.PointerObject | null,
+  arg1: Uint8Array,
+): void {
+  return symbols.__Dialog_set_can_create_directories(
+    arg0,
+    arg1,
+    // @ts-ignore
+    arg1.byteLength,
+  );
+}
+
 function __Dialog_dealloc(
   arg0: Deno.PointerObject | null,
 ): void {
@@ -120,8 +152,14 @@ export class Dialog {
     );
   }
 
-  pick_directory(): Deno.PointerObject | null {
-    return __Dialog_pick_directory(
+  pick_folder(): Deno.PointerObject | null {
+    return __Dialog_pick_folder(
+      this.ptr,
+    );
+  }
+
+  pick_folders(): Deno.PointerObject | null {
+    return __Dialog_pick_folders(
       this.ptr,
     );
   }
@@ -152,6 +190,24 @@ export class Dialog {
 
   add_filter(arg0: Uint8Array): Dialog {
     return __Dialog_add_filter(
+      this.ptr,
+      arg0,
+      // @ts-ignore
+      arg0.byteLength,
+    );
+  }
+
+  set_title(arg0: Uint8Array): void {
+    return __Dialog_set_title(
+      this.ptr,
+      arg0,
+      // @ts-ignore
+      arg0.byteLength,
+    );
+  }
+
+  set_can_create_directories(arg0: Uint8Array): void {
+    return __Dialog_set_can_create_directories(
       this.ptr,
       arg0,
       // @ts-ignore
