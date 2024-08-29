@@ -4,10 +4,16 @@ File dialog, port of [Rust rfd](https://github.com/PolyMeilex/rfd).
 
 ## Install
 
+deno:
+
+```bash
+deno add @miyauci/rfd
+```
+
 node:
 
 ```bash
-npx jsr add @miyauci/fs
+npx jsr add @miyauci/rfd
 ```
 
 ## Usage
@@ -23,8 +29,8 @@ const path = dialog.pickFile();
 
 | Runtime | Import Specifier    |
 | ------- | ------------------- |
-| Node.js | `@miyauci/rfd/node` |
 | Deno    | `@miyauci/rfd/deno` |
+| Node.js | `@miyauci/rfd/node` |
 
 ### Deno Runtime
 
