@@ -81,15 +81,15 @@ jobs:
       #     architecture: x86
 
       - name: Build
-        run: ${{ matrix.targets.cross && 'cross' || 'cargo' }} build -p rfd-node --release --target ${{ matrix.targets.target }} --locked
+        run: ${{ matrix.settings.cross && 'cross' || 'cargo' }} build -p rfd-node --release --target ${{ matrix.settings.target }} --locked
 
       - name: Rename artifacts
         shell: bash
         run: |
-          find target/${{ matrix.targets.target }}/release -maxdepth 1 \( -name '*.so' -o -name '*.dll' -o -name '*.dylib' \) -exec sh -c '
+          find target/${{ matrix.settings.target }}/release -maxdepth 1 \( -name '*.so' -o -name '*.dll' -o -name '*.dylib' \) -exec sh -c '
           for file; do
             if [ -e "$file" ]; then
-              mv "$file" "rfd-${{ matrix.targets.target }}.node";
+              mv "$file" "rfd-${{ matrix.settings.target }}.node";
             fi
           done' sh {} +
 
