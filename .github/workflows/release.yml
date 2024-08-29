@@ -15,6 +15,9 @@ jobs:
           - name: rfd
             pkg-name: rfd-node
             for: node
+          - name: rfd
+            pkg-name: rfd-deno
+            for: deno
 
         settings:
           - os: macos-latest
