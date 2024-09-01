@@ -1,6 +1,8 @@
 # rfd
 
-File dialog, port of [Rust rfd](https://github.com/PolyMeilex/rfd).
+Native dialog, port of [Rust rfd](https://github.com/PolyMeilex/rfd).
+
+Based on [rfd@0.14.1](https://docs.rs/rfd/0.14.1/rfd/index.html).
 
 ## Install
 
@@ -34,7 +36,8 @@ In addition, see supported [runtime](#runtime).
 
 ### MessageDialog
 
-`MessageDialog`は、[rdf::MessageDialog](https://docs.rs/rfd/0.14.1/rfd/struct.MessageDialog.html)に対応します。
+`MessageDialog` corresponds to
+[rdf::MessageDialog](https://docs.rs/rfd/0.14.1/rfd/struct.MessageDialog.html)。
 
 ```ts
 import { load, MessageDialog } from "@miyauci/rfd/$RUNTIME";
@@ -120,6 +123,18 @@ The following runtime are supported:
 | ------- | ------------------- |
 | Deno    | `@miyauci/rfd/deno` |
 | Node.js | `@miyauci/rfd/node` |
+
+### Modules
+
+The following modules are supported:
+
+| rdf                                                                                 |     Supported      |
+| ----------------------------------------------------------------------------------- | :----------------: |
+| [FileDialog](https://docs.rs/rfd/0.14.1/rfd/struct.FileDialog.html)                 | :white_check_mark: |
+| [MessageDialog](https://docs.rs/rfd/0.14.1/rfd/struct.MessageDialog.html)           | :white_check_mark: |
+| [AsyncFileDialog](https://docs.rs/rfd/0.14.1/rfd/struct.AsyncFileDialog.html)       |         -          |
+| [AsyncMessageDialog](https://docs.rs/rfd/0.14.1/rfd/struct.AsyncMessageDialog.html) |         -          |
+| [FileHandle](https://docs.rs/rfd/0.14.1/rfd/struct.FileHandle.html)                 |         -          |
 
 ## API
 
