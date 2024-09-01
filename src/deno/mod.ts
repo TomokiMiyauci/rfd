@@ -1,1 +1,1 @@
-export { FileDialog } from "./ffi.ts";
+export { FileDialog, MessageDialog } from "./ffi.ts";
