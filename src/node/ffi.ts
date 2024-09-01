@@ -62,6 +62,7 @@ export async function load(path?: string): Promise<void> {
   binding = require(binaryPath);
 }
 
+/** Synchronous File Dialog. */
 export class FileDialog implements IFileDialog {
   #dialog: IFileDialog;
   constructor() {
@@ -119,6 +120,7 @@ export class FileDialog implements IFileDialog {
   }
 }
 
+/** Synchronous Message Dialog. */
 export class MessageDialog implements IMessageDialog {
   #dialog: IMessageDialog;
 

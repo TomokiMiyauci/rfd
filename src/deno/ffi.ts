@@ -18,6 +18,7 @@ interface Failure {
   success: false;
 }
 
+/** Synchronous File Dialog. */
 export class FileDialog implements IFileDialog {
   #dialog: Dialog = new Dialog();
 
@@ -123,6 +124,7 @@ export class FileDialog implements IFileDialog {
   }
 }
 
+/** Synchronous Message Dialog. */
 export class MessageDialog implements IMessageDialog {
   #dialog: MessageDialogImpl;
 
