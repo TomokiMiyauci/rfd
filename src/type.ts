@@ -94,3 +94,75 @@ export interface FileDialog {
    */
   setDirectory(path: string): this;
 }
+
+/** Synchronous Message Dialog. */
+export interface MessageDialog {
+  /** Shows a message dialog and returns the button that was pressed.
+   *
+   * [DOCS.RS](https://docs.rs/rfd/latest/rfd/struct.MessageDialog.html#method.show)
+   */
+  show(): MessageDialogResult;
+
+  /** Set level of a dialog
+   *
+   * Depending on the system it can result in level specific icon to show up, the will inform user it message is a error, warning or just information.
+   *
+   * [DOCS.RS](https://docs.rs/rfd/latest/rfd/struct.MessageDialog.html#method.set_level)
+   */
+  setLevel(level: MessageLevel): this;
+
+  /** Set title of a dialog
+   *
+   * [DOCS.RS](https://docs.rs/rfd/latest/rfd/struct.MessageDialog.html#method.set_title)
+   */
+  setTitle(title: string): this;
+
+  /** Set description of a dialog
+   *
+   * Description is a content of a dialog
+   *
+   * [DOCS.RS](https://docs.rs/rfd/latest/rfd/struct.MessageDialog.html#method.set_description)
+   */
+  setDescription(text: string): this;
+
+  /** Set the set of button that will be displayed on the dialog
+   *
+   * - `Ok` dialog is a single `Ok` button
+   * - `OkCancel` dialog, will display 2 buttons: ok and cancel.
+   * - `YesNo` dialog, will display 2 buttons: yes and no.
+   * - `YesNoCancel` dialog, will display 3 buttons: yes, no, and cancel.
+   *
+   * [DOCS.RS](https://docs.rs/rfd/latest/rfd/struct.MessageDialog.html#method.set_buttons)
+   */
+  setButtons(btn: MessageButtons): this;
+}
+
+/** Message level.
+ *
+ * [DOCS.RS](https://docs.rs/rfd/latest/rfd/enum.MessageLevel.html)
+ */
+export type MessageLevel = "Warning" | "Info" | "Error";
+
+/** Message button family.
+ *
+ * [DOCS.RS](https://docs.rs/rfd/latest/rfd/enum.MessageButtons.html)
+ */
+export type MessageButtons =
+  | { kind: "Ok" }
+  | { kind: "OkCancel" }
+  | { kind: "YesNo" }
+  | { kind: "YesNoCancel" }
+  | { kind: "OkCustom"; custom: string }
+  | { kind: "OkCancelCustom"; cancel: string; custom: string }
+  | { kind: "YesNoCancelCustom"; no: string; cancel: string; custom: string };
+
+/** Message dialog result family.
+ *
+ * [DOCS.RS](https://docs.rs/rfd/latest/rfd/enum.MessageDialogResult.html)
+ */
+export type MessageDialogResult =
+  | { kind: "Ok" }
+  | { kind: "Yes" }
+  | { kind: "No" }
+  | { kind: "Cancel" }
+  | { kind: "Custom"; custom: string };

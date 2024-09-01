@@ -1,9 +1,15 @@
-import type { FileDialog as IFileDialog } from "../type.ts";
 import { createRequire } from "node:module";
 import { join } from "node:path";
 import { existsSync } from "node:fs";
 import { arch, platform } from "node:process";
 import { resolvePkgDir, resolvePlatformArchMap, resolves } from "./resolver.ts";
+import type {
+  FileDialog as IFileDialog,
+  MessageButtons,
+  MessageDialog as IMessageDialog,
+  MessageDialogResult,
+  MessageLevel,
+} from "../type.ts";
 import {
   BASE_URL,
   BINARY_NAME,
@@ -111,4 +117,74 @@ export class FileDialog implements IFileDialog {
 
     return this;
   }
+}
+
+export class MessageDialog implements IMessageDialog {
+  #dialog: IMessageDialog;
+
+  constructor() {
+    this.#dialog = new binding.MessageDialog();
+  }
+
+  show(): MessageDialogResult {
+    return this.#dialog.show();
+  }
+
+  setLevel(level: MessageLevel): this {
+    this.#dialog.setLevel(level);
+
+    return this;
+  }
+
+  setDescription(text: string): this {
+    this.#dialog.setDescription(text);
+
+    return this;
+  }
+
+  setTitle(title: string): this {
+    this.#dialog.setTitle(title);
+
+    return this;
+  }
+
+  setButtons(btn: MessageButtons): this {
+    const ref = toMsgButtons(btn, binding.MessageButtons);
+
+    this.#dialog.setButtons(ref);
+
+    return this;
+  }
+}
+
+function toMsgButtons(
+  btn: MessageButtons,
+  factory: MessageButtonFactory,
+): MessageButtons {
+  switch (btn.kind) {
+    case "Ok":
+      return factory.ok();
+    case "OkCancel":
+      return factory.okCancel();
+    case "YesNo":
+      return factory.yesNo();
+    case "YesNoCancel":
+      return factory.yesNoCancel();
+    case "OkCustom":
+      return factory.okCustom(btn.custom);
+    case "OkCancelCustom":
+      return factory.okCancelCustom(btn.cancel, btn.custom);
+    case "YesNoCancelCustom":
+      return factory.yesNoCancelCustom(btn.no, btn.cancel, btn.custom);
+  }
+}
+
+export interface MessageButtonFactory {
+  ok(): MessageButtons;
+  yesNo(): MessageButtons;
+  okCancel(): MessageButtons;
+  yesNoCancel(): MessageButtons;
+  okCustom(custom: string): MessageButtons;
+  okCancelCustom(cancel: string, custom: string): MessageButtons;
+  yesNoCancelCustom(no: string, cancel: string, custom: string): MessageButtons;
 }
