@@ -1,3 +1,11 @@
+# [1.0.0-beta.13](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.12...1.0.0-beta.13) (2024-09-01)
+
+
+### Features
+
+* **deno:** add load function to fetch binary ([54a427a](https://github.com/TomokiMiyauci/rfd/commit/54a427a7a3656893d2091d0b2b69d876f9e3858d))
+* **node:** export load function that customize loading binary ([b67e351](https://github.com/TomokiMiyauci/rfd/commit/b67e351c57977d37bdacc68c0ec8970aa2a98a84))
+
 # [1.0.0-beta.12](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.11...1.0.0-beta.12) (2024-08-29)
 
 
