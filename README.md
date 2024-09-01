@@ -1,5 +1,10 @@
 # rfd
 
+[![JSR](https://jsr.io/badges/@miyauci/rfd)](https://jsr.io/@miyauci/rfd)
+[![GitHub](https://img.shields.io/github/license/TomokiMiyauci/rfd)](https://github.com/TomokiMiyauci/rfd/blob/main/LICENSE)
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
+
 Native dialog, port of [Rust rfd](https://github.com/PolyMeilex/rfd).
 
 Based on [rfd@0.14.1](https://docs.rs/rfd/0.14.1/rfd/index.html).
