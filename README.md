@@ -18,8 +18,13 @@ npx jsr add @miyauci/rfd
 
 ## Usage
 
+The `load` function must be called first. By default, it downloads and caches
+remote binaries.
+
 ```ts
-import { FileDialog } from "@miyauci/rfd/$RUNTIME";
+import { FileDialog, load } from "@miyauci/rfd/$RUNTIME";
+
+await load();
 
 const dialog = new FileDialog();
 const path = dialog.pickFile();
@@ -41,7 +46,9 @@ Deno FFI requires explicit resource release. To prevent resource leaks, use
 [ECMAScript Explicit Resource Management](https://github.com/tc39/proposal-explicit-resource-management).
 
 ```ts
-import { FileDialog } from "@miyauci/rfd/deno";
+import { FileDialog, load } from "@miyauci/rfd/deno";
+
+await load();
 
 using dialog = new FileDialog();
 ```

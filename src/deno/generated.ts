@@ -4,7 +4,21 @@ import { dlopen } from "@denosaurs/plug";
 import { symbols as fli } from "./binding.ts";
 import { options } from "./constant.ts";
 
-const { symbols } = await dlopen(options, fli);
+let symbols: any;
+
+export async function load(path?: string): Promise<void> {
+  if (typeof path === "string") {
+    const result = Deno.dlopen(path, fli);
+
+    symbols = result.symbols;
+
+    return;
+  }
+
+  const result = await dlopen(options, fli);
+
+  symbols = result.symbols;
+}
 
 function __Dialog_new(): Dialog {
   const ret = symbols.__Dialog_new();
