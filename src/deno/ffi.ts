@@ -168,8 +168,6 @@ export class MessageDialog implements IMessageDialog {
   setLevel(level: MessageLevel): this {
     const u8 = new TextEncoder().encode(level);
 
-    console.log(u8);
-
     this.#dialog.set_level(u8);
 
     return this;
