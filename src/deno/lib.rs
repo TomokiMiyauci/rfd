@@ -1,5 +1,10 @@
 use deno_bindgen::deno_bindgen;
-use rfd::FileDialog;
+use rfd::MessageLevel;
+use rfd::{
+    FileDialog, MessageButtons as _MessageButtons, MessageDialog as _MessageDialog,
+    MessageDialogResult,
+};
+use serde::Deserialize;
 use serde_json::json;
 use serde_json::Value;
 use std::ffi::c_char;
@@ -10,6 +15,95 @@ use std::str;
 #[deno_bindgen]
 pub struct Dialog {
     dialog: FileDialog,
+}
+
+#[deno_bindgen]
+pub struct MessageDialog {
+    dialog: _MessageDialog,
+}
+
+#[deno_bindgen]
+impl MessageDialog {
+    #[constructor]
+    fn new() -> MessageDialog {
+        MessageDialog {
+            dialog: _MessageDialog::new(),
+        }
+    }
+
+    fn set_buttons(&mut self, btn: &[u8]) {
+        let btn = str::from_utf8(btn).unwrap();
+        let btn: MessageButtons = serde_json::from_str(btn).unwrap();
+
+        let btn = match btn.kind.as_str() {
+            "Ok" => _MessageButtons::Ok,
+            "OkCancel" => _MessageButtons::OkCancel,
+            "OkCancelCustom" => {
+                _MessageButtons::OkCancelCustom(btn.cancel.unwrap(), btn.custom.unwrap())
+            }
+            "OkCustom" => _MessageButtons::OkCustom(btn.custom.unwrap()),
+
+            "YesNo" => _MessageButtons::YesNo,
+            "YesNoCancel" => _MessageButtons::YesNoCancel,
+            "YesNoCancelCustom" => _MessageButtons::YesNoCancelCustom(
+                btn.no.unwrap(),
+                btn.cancel.unwrap(),
+                btn.custom.unwrap(),
+            ),
+            _ => panic!("Unknown button kind"),
+        };
+
+        self.dialog = self.dialog.clone().set_buttons(btn);
+    }
+
+    fn set_level(&mut self, level: &[u8]) {
+        let level = str::from_utf8(level).unwrap();
+
+        let level = match level {
+            "Info" => MessageLevel::Info,
+            "Warning" => MessageLevel::Warning,
+            "Error" => MessageLevel::Error,
+            _ => panic!("Unknown message level kind"),
+        };
+
+        self.dialog = self.dialog.clone().set_level(level);
+    }
+
+    fn set_title(&mut self, title: &[u8]) {
+        let title = str::from_utf8(title).unwrap();
+
+        self.dialog = self.dialog.clone().set_title(title)
+    }
+
+    fn set_description(&mut self, text: &[u8]) {
+        let text = str::from_utf8(text).unwrap();
+
+        self.dialog = self.dialog.clone().set_description(text);
+    }
+
+    fn show(&self) -> *mut c_char {
+        let result = self.dialog.clone().show();
+
+        let json = match result {
+            MessageDialogResult::Ok => json!({"kind": "Ok"}),
+            MessageDialogResult::No => json!({"kind": "No"}),
+            MessageDialogResult::Yes => json!({"kind": "Yes"}),
+            MessageDialogResult::Cancel => json!({"kind": "Cancel"}),
+            MessageDialogResult::Custom(custom) => json!({"kind": "Custom", "custom": custom }),
+        };
+
+        let c_string = CString::new(json.to_string()).unwrap();
+
+        c_string.into_raw()
+    }
+}
+
+#[derive(Deserialize)]
+struct MessageButtons {
+    kind: String,
+    custom: Option<String>,
+    cancel: Option<String>,
+    no: Option<String>,
 }
 
 #[deno_bindgen]

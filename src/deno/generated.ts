@@ -20,6 +20,138 @@ export async function load(path?: string): Promise<void> {
   symbols = result.symbols;
 }
 
+function __MessageDialog_new(): MessageDialog {
+  const ret = symbols.__MessageDialog_new();
+  return MessageDialog.__constructor(ret);
+}
+
+function __MessageDialog_set_buttons(
+  arg0: Deno.PointerObject | null,
+  arg1: Uint8Array,
+): void {
+  return symbols.__MessageDialog_set_buttons(
+    arg0,
+    arg1,
+    arg1.byteLength,
+  );
+}
+
+function __MessageDialog_set_level(
+  arg0: Deno.PointerObject | null,
+  arg1: Uint8Array,
+): void {
+  return symbols.__MessageDialog_set_level(
+    arg0,
+    arg1,
+    arg1.byteLength,
+  );
+}
+
+function __MessageDialog_set_title(
+  arg0: Deno.PointerObject | null,
+  arg1: Uint8Array,
+): void {
+  return symbols.__MessageDialog_set_title(
+    arg0,
+    arg1,
+    arg1.byteLength,
+  );
+}
+
+function __MessageDialog_set_description(
+  arg0: Deno.PointerObject | null,
+  arg1: Uint8Array,
+): void {
+  return symbols.__MessageDialog_set_description(
+    arg0,
+    arg1,
+    arg1.byteLength,
+  );
+}
+
+function __MessageDialog_show(
+  arg0: Deno.PointerObject | null,
+): Deno.PointerObject | null {
+  return symbols.__MessageDialog_show(
+    arg0,
+  );
+}
+
+function __MessageDialog_dealloc(
+  arg0: Deno.PointerObject | null,
+): void {
+  return symbols.__MessageDialog_dealloc(
+    arg0,
+  );
+}
+
+export class MessageDialog {
+  ptr: Deno.PointerObject | null = null;
+
+  static __constructor(ptr: Deno.PointerObject | null) {
+    const self = Object.create(MessageDialog.prototype);
+    self.ptr = ptr;
+    return self;
+  }
+
+  [Symbol.dispose]() {
+    this.dealloc();
+    this.ptr = null;
+  }
+
+  constructor() {
+    return __MessageDialog_new();
+  }
+
+  set_buttons(arg0: Uint8Array): void {
+    return __MessageDialog_set_buttons(
+      this.ptr,
+      arg0,
+      // @ts-ignore
+      arg0.byteLength,
+    );
+  }
+
+  set_level(arg0: Uint8Array): void {
+    return __MessageDialog_set_level(
+      this.ptr,
+      arg0,
+      // @ts-ignore
+      arg0.byteLength,
+    );
+  }
+
+  set_title(arg0: Uint8Array): void {
+    return __MessageDialog_set_title(
+      this.ptr,
+      arg0,
+      // @ts-ignore
+      arg0.byteLength,
+    );
+  }
+
+  set_description(arg0: Uint8Array): void {
+    return __MessageDialog_set_description(
+      this.ptr,
+      arg0,
+      // @ts-ignore
+      arg0.byteLength,
+    );
+  }
+
+  show(): Deno.PointerObject | null {
+    return __MessageDialog_show(
+      this.ptr,
+    );
+  }
+
+  dealloc(): void {
+    return __MessageDialog_dealloc(
+      this.ptr,
+    );
+  }
+}
+
 function __Dialog_new(): Dialog {
   const ret = symbols.__Dialog_new();
   return Dialog.__constructor(ret);
@@ -96,7 +228,6 @@ function __Dialog_add_filter(
   return symbols.__Dialog_add_filter(
     arg0,
     arg1,
-    // @ts-ignore
     arg1.byteLength,
   );
 }

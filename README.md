@@ -32,6 +32,25 @@ const path = dialog.pickFile();
 
 In addition, see supported [runtime](#runtime).
 
+### MessageDialog
+
+`MessageDialog`は、[rdf::MessageDialog](https://docs.rs/rfd/0.14.1/rfd/struct.MessageDialog.html)に対応します。
+
+```ts
+import { load, MessageDialog } from "@miyauci/rfd/$RUNTIME";
+
+await load();
+
+const dialog = new MessageDialog();
+const result = dialog.setLevel("Error").setButtons({
+  kind: "OkCustom",
+  custom: "Cancel",
+})
+  .show();
+```
+
+Rust enums are represented by JavaScript objects.
+
 ### Loading Local Binary
 
 If you want to use a local binary, specify its path.

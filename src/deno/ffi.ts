@@ -1,5 +1,11 @@
-import { Dialog } from "./generated.ts";
-import type { FileDialog as _FileDialog } from "../type.ts";
+import { Dialog, MessageDialog as MessageDialogImpl } from "./generated.ts";
+import type {
+  FileDialog as IFileDialog,
+  MessageButtons,
+  MessageDialog as IMessageDialog,
+  MessageDialogResult,
+  MessageLevel,
+} from "../type.ts";
 
 type Result<T> = Success<T> | Failure;
 
@@ -12,7 +18,7 @@ interface Failure {
   success: false;
 }
 
-export class FileDialog implements _FileDialog {
+export class FileDialog implements IFileDialog {
   #dialog: Dialog = new Dialog();
 
   pickFile(): string | null {
@@ -108,6 +114,61 @@ export class FileDialog implements _FileDialog {
     const u8 = new TextEncoder().encode(str);
 
     this.#dialog.set_can_create_directories(u8);
+
+    return this;
+  }
+
+  [Symbol.dispose](): void {
+    this.#dialog[Symbol.dispose]();
+  }
+}
+
+export class MessageDialog implements IMessageDialog {
+  #dialog: MessageDialogImpl;
+
+  constructor() {
+    this.#dialog = new MessageDialogImpl();
+  }
+
+  show(): MessageDialogResult {
+    const ptr = this.#dialog.show();
+    const ptrView = new Deno.UnsafePointerView(ptr!);
+    const jsonStr = ptrView.getCString();
+
+    return JSON.parse(jsonStr) as MessageDialogResult;
+  }
+
+  setDescription(text: string): this {
+    const u8 = new TextEncoder().encode(text);
+
+    this.#dialog.set_description(u8);
+
+    return this;
+  }
+
+  setTitle(title: string): this {
+    const u8 = new TextEncoder().encode(title);
+
+    this.#dialog.set_title(u8);
+
+    return this;
+  }
+
+  setButtons(btn: MessageButtons): this {
+    const json = JSON.stringify(btn);
+    const u8 = new TextEncoder().encode(json);
+
+    this.#dialog.set_buttons(u8);
+
+    return this;
+  }
+
+  setLevel(level: MessageLevel): this {
+    const u8 = new TextEncoder().encode(level);
+
+    console.log(u8);
+
+    this.#dialog.set_level(u8);
 
     return this;
   }
