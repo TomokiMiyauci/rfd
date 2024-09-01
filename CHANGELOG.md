@@ -1,3 +1,11 @@
+# [1.0.0-beta.14](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.13...1.0.0-beta.14) (2024-09-01)
+
+
+### Features
+
+* **deno:** add MessageDialog implementation ([68e28f6](https://github.com/TomokiMiyauci/rfd/commit/68e28f68ec30307d4e351ea51197c1a61aa2bf87))
+* **node:** add message dialog impl to node ([9fcb68c](https://github.com/TomokiMiyauci/rfd/commit/9fcb68c7e5d5b8e23a6ffb8b7a1c6bb621496b13))
+
 # [1.0.0-beta.13](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.12...1.0.0-beta.13) (2024-09-01)
 
 
