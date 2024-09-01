@@ -30,12 +30,17 @@ const dialog = new FileDialog();
 const path = dialog.pickFile();
 ```
 
-### Supported Runtime
+In addition, see supported [runtime](#runtime).
 
-| Runtime | Import Specifier    |
-| ------- | ------------------- |
-| Deno    | `@miyauci/rfd/deno` |
-| Node.js | `@miyauci/rfd/node` |
+### Loading Local Binary
+
+If you want to use a local binary, specify its path.
+
+```ts
+import { load } from "@miyauci/rfd/$RUNTIME";
+
+await load("/path/to/bin");
+```
 
 ### Deno Runtime
 
@@ -68,6 +73,34 @@ The following permissions must be allowed:
 | `--allow-env`  | <ul><li>`DENO_DIR`</li><li>`HOME`</li></ul> |
 | `--allow-read` | `${DENO_DIR}/plug`                          |
 | `--allow-ffi`  | path to binary cache                        |
+
+This is usually used for debugging, etc.
+
+## Support
+
+Currently supported targets are as follows.
+
+### Platform
+
+The following platforms are supported:
+
+| Platform                                        | Rust Target                 |
+| ----------------------------------------------- | --------------------------- |
+| 64-bit macOS (10.12+, Sierra+)                  | `x86_64-apple-darwin`       |
+| ARM64 macOS (11.0+, Big Sur+)                   | `aarch64-apple-darwin`      |
+| 64-bit MSVC (Windows 10+, Windows Server 2016+) | `x86_64-pc-windows-msvc`    |
+| ARM64 Windows MSVC                              | `aarch64-pc-windows-msvc`   |
+| 64-bit Linux (kernel 3.2+, glibc 2.17+)         | `x86_64-unknown-linux-gnu`  |
+| ARM64 Linux (kernel 4.1, glibc 2.17+)           | `aarch64-unknown-linux-gnu` |
+
+### Runtime
+
+The following runtime are supported:
+
+| Runtime | Import Specifier    |
+| ------- | ------------------- |
+| Deno    | `@miyauci/rfd/deno` |
+| Node.js | `@miyauci/rfd/node` |
 
 ## API
 
