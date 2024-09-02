@@ -1,3 +1,10 @@
+# [1.0.0-beta.17](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.16...1.0.0-beta.17) (2024-09-02)
+
+
+### Performance Improvements
+
+* optimize release build to set `strip` flag ([29611f5](https://github.com/TomokiMiyauci/rfd/commit/29611f5f2531b02c4ed2e01656391e64b164fac1))
+
 # [1.0.0-beta.16](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.15...1.0.0-beta.16) (2024-09-02)
 
 
