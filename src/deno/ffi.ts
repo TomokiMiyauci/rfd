@@ -1,11 +1,11 @@
 import { Dialog, MessageDialog as MessageDialogImpl } from "./generated.ts";
 import type {
   FileDialog as IFileDialog,
-  MessageButtons,
+  MessageButtonsJson,
   MessageDialog as IMessageDialog,
   MessageDialogResult,
   MessageLevel,
-} from "../type.ts";
+} from "../generated.ts";
 
 type Result<T> = Success<T> | Failure;
 
@@ -156,7 +156,7 @@ export class MessageDialog implements IMessageDialog {
     return this;
   }
 
-  setButtons(btn: MessageButtons): this {
+  setButtons(btn: MessageButtonsJson): this {
     const json = JSON.stringify(btn);
     const u8 = new TextEncoder().encode(json);
 

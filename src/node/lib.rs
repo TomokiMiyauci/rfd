@@ -18,9 +18,10 @@ pub struct FileDialog {
 #[napi]
 pub struct MessageButtons {
     kind: String,
-    custom: Option<String>,
-    cancel: Option<String>,
+    yes: Option<String>,
     no: Option<String>,
+    ok: Option<String>,
+    cancel: Option<String>,
 }
 
 #[napi]
@@ -29,9 +30,10 @@ impl MessageButtons {
     pub fn ok() -> MessageButtons {
         MessageButtons {
             kind: "Ok".to_string(),
-            custom: None,
-            cancel: None,
+            yes: None,
             no: None,
+            ok: None,
+            cancel: None,
         }
     }
 
@@ -39,9 +41,10 @@ impl MessageButtons {
     pub fn yes_no() -> MessageButtons {
         MessageButtons {
             kind: "YesNo".to_string(),
-            custom: None,
-            cancel: None,
+            yes: None,
             no: None,
+            ok: None,
+            cancel: None,
         }
     }
 
@@ -49,9 +52,10 @@ impl MessageButtons {
     pub fn ok_cancel() -> MessageButtons {
         MessageButtons {
             kind: "OkCancel".to_string(),
-            custom: None,
-            cancel: None,
+            yes: None,
             no: None,
+            ok: None,
+            cancel: None,
         }
     }
 
@@ -59,39 +63,43 @@ impl MessageButtons {
     pub fn yes_no_cancel() -> MessageButtons {
         MessageButtons {
             kind: "YesNoCancel".to_string(),
-            custom: None,
-            cancel: None,
+            yes: None,
             no: None,
+            ok: None,
+            cancel: None,
         }
     }
 
     #[napi]
-    pub fn ok_custom(custom: String) -> MessageButtons {
+    pub fn ok_custom(ok: String) -> MessageButtons {
         MessageButtons {
             kind: "OkCustom".to_string(),
-            custom: Some(custom),
-            cancel: None,
+            yes: None,
             no: None,
+            ok: Some(ok),
+            cancel: None,
         }
     }
 
     #[napi]
-    pub fn ok_cancel_custom(cancel: String, custom: String) -> MessageButtons {
+    pub fn ok_cancel_custom(ok: String, cancel: String) -> MessageButtons {
         MessageButtons {
             kind: "OkCancelCustom".to_string(),
-            custom: Some(custom),
-            cancel: Some(cancel),
+            yes: None,
             no: None,
+            ok: Some(ok),
+            cancel: Some(cancel),
         }
     }
 
     #[napi]
-    pub fn yes_no_cancel_custom(no: String, cancel: String, custom: String) -> MessageButtons {
+    pub fn yes_no_cancel_custom(yes: String, no: String, cancel: String) -> MessageButtons {
         MessageButtons {
             kind: "YesNoCancelCustom".to_string(),
-            custom: Some(custom),
-            cancel: Some(cancel),
+            yes: Some(yes),
             no: Some(no),
+            ok: None,
+            cancel: Some(cancel),
         }
     }
 }
@@ -106,7 +114,7 @@ pub enum MessageLevel {
 #[napi]
 pub struct MessageDialogResult {
     pub kind: String,
-    pub custom: Option<String>,
+    pub value: Option<String>,
 }
 
 #[napi]
@@ -152,15 +160,15 @@ impl MessageDialog {
             "YesNo" => _MessageButtons::YesNo,
             "OkCancel" => _MessageButtons::OkCancel,
             "YesNoCancel" => _MessageButtons::YesNoCancel,
-            "OkCustom" => _MessageButtons::OkCustom(btn.custom.as_ref().unwrap().to_string()),
+            "OkCustom" => _MessageButtons::OkCustom(btn.ok.as_ref().unwrap().to_string()),
             "OkCancelCustom" => _MessageButtons::OkCancelCustom(
+                btn.ok.as_ref().unwrap().to_string(),
                 btn.cancel.as_ref().unwrap().to_string(),
-                btn.custom.as_ref().unwrap().to_string(),
             ),
             "YesNoCancelCustom" => _MessageButtons::YesNoCancelCustom(
+                btn.yes.as_ref().unwrap().to_string(),
                 btn.no.as_ref().unwrap().to_string(),
                 btn.cancel.as_ref().unwrap().to_string(),
-                btn.custom.as_ref().unwrap().to_string(),
             ),
             _ => panic!("Unknown message button kind"),
         };
@@ -175,23 +183,23 @@ impl MessageDialog {
         match self.dialog.clone().show() {
             _MessageDialogResult::Ok => MessageDialogResult {
                 kind: "Ok".to_string(),
-                custom: None,
+                value: None,
             },
             _MessageDialogResult::Yes => MessageDialogResult {
                 kind: "Yes".to_string(),
-                custom: None,
+                value: None,
             },
             _MessageDialogResult::No => MessageDialogResult {
                 kind: "No".to_string(),
-                custom: None,
+                value: None,
             },
             _MessageDialogResult::Cancel => MessageDialogResult {
                 kind: "Cancel".to_string(),
-                custom: None,
+                value: None,
             },
-            _MessageDialogResult::Custom(custom) => MessageDialogResult {
+            _MessageDialogResult::Custom(value) => MessageDialogResult {
                 kind: "Custom".to_string(),
-                custom: Some(custom),
+                value: Some(value),
             },
         }
     }

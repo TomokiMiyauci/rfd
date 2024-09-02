@@ -5,8 +5,8 @@
 
 export { FileDialog, MessageDialog } from "./ffi.ts";
 export { load } from "./generated.ts";
-export type {
+export {
   MessageButtons,
-  MessageDialogResult,
+  type MessageDialogResult,
   MessageLevel,
-} from "../type.ts";
+} from "../generated.ts";

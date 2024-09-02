@@ -6,10 +6,11 @@ import { resolvePkgDir, resolvePlatformArchMap, resolves } from "./resolver.ts";
 import type {
   FileDialog as IFileDialog,
   MessageButtons,
+  MessageButtonsJson,
   MessageDialog as IMessageDialog,
   MessageDialogResult,
   MessageLevel,
-} from "../type.ts";
+} from "../generated.ts";
 import {
   BASE_URL,
   BINARY_NAME,
@@ -150,7 +151,7 @@ export class MessageDialog implements IMessageDialog {
     return this;
   }
 
-  setButtons(btn: MessageButtons): this {
+  setButtons(btn: MessageButtonsJson): this {
     const ref = toMsgButtons(btn, binding.MessageButtons);
 
     this.#dialog.setButtons(ref);
@@ -160,7 +161,7 @@ export class MessageDialog implements IMessageDialog {
 }
 
 function toMsgButtons(
-  btn: MessageButtons,
+  btn: MessageButtonsJson,
   factory: MessageButtonFactory,
 ): MessageButtons {
   switch (btn.kind) {
@@ -173,11 +174,11 @@ function toMsgButtons(
     case "YesNoCancel":
       return factory.yesNoCancel();
     case "OkCustom":
-      return factory.okCustom(btn.custom);
+      return factory.okCustom(btn.ok);
     case "OkCancelCustom":
-      return factory.okCancelCustom(btn.cancel, btn.custom);
+      return factory.okCancelCustom(btn.ok, btn.cancel);
     case "YesNoCancelCustom":
-      return factory.yesNoCancelCustom(btn.no, btn.cancel, btn.custom);
+      return factory.yesNoCancelCustom(btn.yes, btn.no, btn.cancel);
   }
 }
 

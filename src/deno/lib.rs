@@ -39,16 +39,16 @@ impl MessageDialog {
             "Ok" => _MessageButtons::Ok,
             "OkCancel" => _MessageButtons::OkCancel,
             "OkCancelCustom" => {
-                _MessageButtons::OkCancelCustom(btn.cancel.unwrap(), btn.custom.unwrap())
+                _MessageButtons::OkCancelCustom(btn.ok.unwrap(), btn.cancel.unwrap())
             }
-            "OkCustom" => _MessageButtons::OkCustom(btn.custom.unwrap()),
+            "OkCustom" => _MessageButtons::OkCustom(btn.ok.unwrap()),
 
             "YesNo" => _MessageButtons::YesNo,
             "YesNoCancel" => _MessageButtons::YesNoCancel,
             "YesNoCancelCustom" => _MessageButtons::YesNoCancelCustom(
+                btn.yes.unwrap(),
                 btn.no.unwrap(),
                 btn.cancel.unwrap(),
-                btn.custom.unwrap(),
             ),
             _ => panic!("Unknown button kind"),
         };
@@ -89,7 +89,7 @@ impl MessageDialog {
             MessageDialogResult::No => json!({"kind": "No"}),
             MessageDialogResult::Yes => json!({"kind": "Yes"}),
             MessageDialogResult::Cancel => json!({"kind": "Cancel"}),
-            MessageDialogResult::Custom(custom) => json!({"kind": "Custom", "custom": custom }),
+            MessageDialogResult::Custom(value) => json!({"kind": "Custom", "value": value }),
         };
 
         let c_string = CString::new(json.to_string()).unwrap();
@@ -101,9 +101,10 @@ impl MessageDialog {
 #[derive(Deserialize)]
 struct MessageButtons {
     kind: String,
-    custom: Option<String>,
-    cancel: Option<String>,
+    yes: Option<String>,
     no: Option<String>,
+    ok: Option<String>,
+    cancel: Option<String>,
 }
 
 #[deno_bindgen]

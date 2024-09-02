@@ -137,26 +137,17 @@ export interface MessageDialog {
   setButtons(btn: MessageButtons): this;
 }
 
-/** Message level.
- *
- * [DOCS.RS](https://docs.rs/rfd/latest/rfd/enum.MessageLevel.html)
- */
-export type MessageLevel = "Warning" | "Info" | "Error";
-
-/** Message button family.
- *
- * [DOCS.RS](https://docs.rs/rfd/latest/rfd/enum.MessageButtons.html)
- */
-export type MessageButtons =
+/** Message button javascript notation. */
+export type MessageButtonsJson =
   | { kind: "Ok" }
   | { kind: "OkCancel" }
   | { kind: "YesNo" }
   | { kind: "YesNoCancel" }
-  | { kind: "OkCustom"; custom: string }
-  | { kind: "OkCancelCustom"; cancel: string; custom: string }
-  | { kind: "YesNoCancelCustom"; no: string; cancel: string; custom: string };
+  | { kind: "OkCustom"; ok: string }
+  | { kind: "OkCancelCustom"; ok: string; cancel: string }
+  | { kind: "YesNoCancelCustom"; yes: string; no: string; cancel: string };
 
-/** Message dialog result family.
+/** Message dialog result javascript notation.
  *
  * [DOCS.RS](https://docs.rs/rfd/latest/rfd/enum.MessageDialogResult.html)
  */
@@ -165,4 +156,51 @@ export type MessageDialogResult =
   | { kind: "Yes" }
   | { kind: "No" }
   | { kind: "Cancel" }
-  | { kind: "Custom"; custom: string };
+  | { kind: "Custom"; value: string };
+
+/**
+ * [DOCS.RS](https://docs.rs/rfd/0.14.1/rfd/enum.MessageButtons.html)
+ */
+export class MessageButtons {
+  static Ok: MessageButtonsJson = {
+    kind: "Ok",
+  };
+
+  static YesNo: MessageButtonsJson = {
+    kind: "YesNo",
+  };
+
+  static OkCancel: MessageButtonsJson = {
+    kind: "OkCancel",
+  };
+
+  static YesNoCancel: MessageButtonsJson = {
+    kind: "YesNoCancel",
+  };
+
+  static OkCustom(ok: string): MessageButtonsJson {
+    return { kind: "OkCustom", ok };
+  }
+
+  static OkCancelCustom(ok: string, cancel: string): MessageButtonsJson {
+    return { kind: "OkCancelCustom", ok, cancel };
+  }
+
+  static YesNoCancelCustom(
+    yes: string,
+    no: string,
+    cancel: string,
+  ): MessageButtonsJson {
+    return { kind: "YesNoCancelCustom", yes, no, cancel };
+  }
+}
+
+/** Message level.
+ *
+ * [DOCS.RS](https://docs.rs/rfd/latest/rfd/enum.MessageLevel.html)
+ */
+export enum MessageLevel {
+  Info = "Info",
+  Warning = "Warning",
+  Error = "Error",
+}

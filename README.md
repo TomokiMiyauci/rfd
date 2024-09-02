@@ -45,19 +45,21 @@ In addition, see supported [runtime](#runtime).
 [rdf::MessageDialog](https://docs.rs/rfd/0.14.1/rfd/struct.MessageDialog.html)。
 
 ```ts
-import { load, MessageDialog } from "@miyauci/rfd/$RUNTIME";
+import {
+  load,
+  MessageButtons,
+  MessageDialog,
+  MessageLevel,
+} from "@miyauci/rfd/$RUNTIME";
 
 await load();
 
 const dialog = new MessageDialog();
-const result = dialog.setLevel("Error").setButtons({
-  kind: "OkCustom",
-  custom: "Cancel",
-})
+const result = dialog.setLevel(MessageLevel.Error).setButtons(
+  MessageButtons.OkCancel,
+)
   .show();
 ```
-
-Rust enums are represented by JavaScript objects.
 
 ### Loading Local Binary
 
