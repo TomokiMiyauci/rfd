@@ -1,3 +1,10 @@
+# [1.0.0-beta.15](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.14...1.0.0-beta.15) (2024-09-02)
+
+
+### Features
+
+* export enum and message button factory ([6453467](https://github.com/TomokiMiyauci/rfd/commit/64534674eebafc63ef19bc2b4fb7942b879f091c))
+
 # [1.0.0-beta.14](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.13...1.0.0-beta.14) (2024-09-01)
 
 
