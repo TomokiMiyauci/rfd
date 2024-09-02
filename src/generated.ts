@@ -178,14 +178,17 @@ export class MessageButtons {
     kind: "YesNoCancel",
   };
 
+  /** One customizable button. */
   static OkCustom(ok: string): MessageButtonsJson {
     return { kind: "OkCustom", ok };
   }
 
+  /** Two customizable buttons.  */
   static OkCancelCustom(ok: string, cancel: string): MessageButtonsJson {
     return { kind: "OkCancelCustom", ok, cancel };
   }
 
+  /** Three customizable buttons. */
   static YesNoCancelCustom(
     yes: string,
     no: string,
