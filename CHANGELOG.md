@@ -1,3 +1,10 @@
+# [1.0.0-beta.16](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.15...1.0.0-beta.16) (2024-09-02)
+
+
+### Features
+
+* optimize release build ([000900f](https://github.com/TomokiMiyauci/rfd/commit/000900f9c39ce4540fcd14f4372d053df365474d))
+
 # [1.0.0-beta.15](https://github.com/TomokiMiyauci/rfd/compare/1.0.0-beta.14...1.0.0-beta.15) (2024-09-02)
 
 
