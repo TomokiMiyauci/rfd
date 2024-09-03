@@ -6,6 +6,14 @@ import { options } from "./constant.ts";
 
 let symbols: any;
 
+/** Loading binary.
+ *
+ * To use all other modules, this must be called first.
+ *
+ * By default, remote binaries are fetched and cached.
+ *
+ * To use local binaries, specify {@link path}.
+ */
 export async function load(path?: string): Promise<void> {
   if (typeof path === "string") {
     const result = Deno.dlopen(path, fli);

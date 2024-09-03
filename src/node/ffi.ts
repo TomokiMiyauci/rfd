@@ -25,6 +25,15 @@ import { download } from "./cache.ts";
 // deno-lint-ignore no-explicit-any
 let binding: any;
 
+/** Loading binary.
+ *
+ * To use all other modules, this must be called first.
+ *
+ * By default, remote binaries are fetched and cached.
+ * Cache location is `node_modules/$PKG/.bin/`.
+ *
+ * To use local binaries, specify {@link path}.
+ */
 export async function load(path?: string): Promise<void> {
   const require = createRequire(import.meta.url);
 
