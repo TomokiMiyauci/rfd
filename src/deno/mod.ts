@@ -1,4 +1,4 @@
-/** Dialog modules for Node.js runtime.
+/** Dialog modules for Deno runtime.
  *
  * @module
  */
