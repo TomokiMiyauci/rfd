@@ -5,13 +5,18 @@
     "build-node": "deno run --allow-env --allow-read --allow-sys --allow-write=. --allow-run npm:@napi-rs/cli build --cargo-cwd src/node --release",
     "test": "deno test --doc"
   },
-  "exclude": ["CHANGELOG.md"],
+  "exclude": ["CHANGELOG.md", "target"],
 
   "imports": {
-    "@miyauci/rfd/$RUNTIME": "./src/node/mod.ts"
+    "@denosaurs/plug": "jsr:@denosaurs/plug@^1.0.6",
+    "@miyauci/node-esm-resolution": "jsr:@miyauci/node-esm-resolution@^1.0.0-beta.6",
+    "@miyauci/rfd/$RUNTIME": "./src/node/mod.ts",
+    "@miyauci/rfd/deno": "./src/deno/mod.ts",
+    "write-file-safe": "npm:write-file-safe@^2.0.3"
   },
 
   "exports": {
+    "./deno": "./src/deno/mod.ts",
     "./node": "./src/node/mod.ts"
   },
 

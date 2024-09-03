@@ -12,3 +12,4 @@ napi-build = "2.0.1"
 
 [lib]
 crate-type = ["cdylib"]
+path = "lib.rs"
