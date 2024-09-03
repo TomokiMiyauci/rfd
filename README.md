@@ -42,7 +42,7 @@ In addition, see supported [runtime](#runtime).
 ### MessageDialog
 
 `MessageDialog` corresponds to
-[rdf::MessageDialog](https://docs.rs/rfd/0.14.1/rfd/struct.MessageDialog.html)。
+[rfd::MessageDialog](https://docs.rs/rfd/0.14.1/rfd/struct.MessageDialog.html)。
 
 ```ts
 import {
@@ -135,7 +135,7 @@ The following runtime are supported:
 
 The following modules are supported:
 
-| rdf                                                                                 |     Supported      |
+| rfd                                                                                 |     Supported      |
 | ----------------------------------------------------------------------------------- | :----------------: |
 | [FileDialog](https://docs.rs/rfd/0.14.1/rfd/struct.FileDialog.html)                 | :white_check_mark: |
 | [MessageDialog](https://docs.rs/rfd/0.14.1/rfd/struct.MessageDialog.html)           | :white_check_mark: |
